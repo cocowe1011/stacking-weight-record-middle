@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.wl.pcs</groupId>
-    <artifactId>ccs-disinfection-middle</artifactId>
+    <artifactId>stacking-weight-record-middle</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <!--导入springboot 父工程-->

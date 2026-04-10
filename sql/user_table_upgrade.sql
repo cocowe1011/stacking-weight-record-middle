@@ -26,7 +26,7 @@ END
 IF NOT EXISTS (SELECT 1 FROM user_info WHERE user_code = 'admin')
 BEGIN
     INSERT INTO user_info (user_id, user_code, user_password, user_name, user_role, login_fail_count, is_locked, create_time, update_time)
-    VALUES (1, 'admin', 'wcs-admin', N'系统管理员', 'ADMIN', 0, 0, GETDATE(), GETDATE());
+    VALUES (1, 'admin', 'admin', N'系统管理员', 'ADMIN', 0, 0, GETDATE(), GETDATE());
 END
 
 -- 8. 更新现有用户为操作员角色

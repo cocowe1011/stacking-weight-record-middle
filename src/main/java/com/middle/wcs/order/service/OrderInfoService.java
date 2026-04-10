@@ -34,19 +34,8 @@ public interface OrderInfoService {
      * @return 订单信息
      */
     OrderInfo getOrderInfoById(Long id);
-    
-    /**
-     * 根据条件查询订单列表
-     *
-     * @return 订单列表
-     */
-    List<OrderInfo> queryOrderList();
 
     PageInfo<OrderInfo> queryHistoryOrderList(OrderInfoPageDTO dto);
-
-    OrderInfo getNowRunningOrder();
-
-    OrderInfo getOrderInfoByBatchId(Long batchId);
 
     List<OrderInfo> selectByList(OrderInfo dto);
 }

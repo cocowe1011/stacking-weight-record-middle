@@ -45,26 +45,6 @@ public class OrderInfoController {
         return ResponseResult.success(this.orderInfoService.getOrderInfoById(id));
     }
 
-    @ApiOperation("通过batchId查询订单信息")
-    @GetMapping("/getOrderInfoByBatchId")
-    public ResponseResult<OrderInfo> getOrderInfoByBatchId(@ApiParam(value = "批次ID", required = true) Long batchId) {
-        return ResponseResult.success(this.orderInfoService.getOrderInfoByBatchId(batchId));
-    }
-
-    @ApiOperation("查询订单列表-正在执行和待执行的")
-    @PostMapping("/queryOrderList")
-    public ResponseResult<List<OrderInfo>> queryOrderList() {
-        return ResponseResult.success(this.orderInfoService.queryOrderList());
-    }
-
-    @ApiOperation("查询订单-正在执行")
-    @PostMapping("/getNowRunningOrder")
-    public ResponseResult<OrderInfo> getNowRunningOrder() {
-        return ResponseResult.success(this.orderInfoService.getNowRunningOrder());
-    }
-
-
-
     /**
      * 查询历史订单信息列表
      * @return 出参

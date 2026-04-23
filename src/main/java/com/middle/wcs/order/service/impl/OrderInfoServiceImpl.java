@@ -54,4 +54,9 @@ public class OrderInfoServiceImpl implements OrderInfoService {
         QueryWrapper<OrderInfo> wrapper= new QueryWrapper<>(dto);
         return this.orderInfoMapper.selectList(wrapper);
     }
+
+    @Override
+    public OrderInfo getLastUnloadGoods() {
+        return this.orderInfoMapper.getLastUnloadGoods();
+    }
 }

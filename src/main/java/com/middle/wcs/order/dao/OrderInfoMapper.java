@@ -16,4 +16,10 @@ import java.util.List;
 @Mapper
 public interface OrderInfoMapper extends BaseMapper<OrderInfo> {
     List<OrderInfo> queryHistoryOrderList(OrderInfoPageDTO dto);
+
+    /**
+     * 查询今日最新已下货数据
+     * @return 订单信息
+     */
+    OrderInfo getLastUnloadGoods();
 }

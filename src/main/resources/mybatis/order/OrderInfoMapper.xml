@@ -15,6 +15,8 @@
         <result property="weight" column="weight" jdbcType="VARCHAR"/>
         <result property="batchNum" column="batch_num" jdbcType="VARCHAR"/>
         <result property="source" column="source" jdbcType="VARCHAR"/>
+        <result property="productCode" column="product_code" jdbcType="VARCHAR"/>
+        <result property="orderId" column="order_id" jdbcType="VARCHAR"/>
     </resultMap>
 
     <select id="queryHistoryOrderList" resultMap="OrderInfoMap">
@@ -61,6 +63,31 @@
         </if>
         ORDER BY
             insert_time DESC
+    </select>
+
+    <select id="getLastUnloadGoods" resultMap="OrderInfoMap">
+        SELECT TOP 1
+            id,
+            insert_time,
+            batch_id,
+            product_name,
+            tray_code,
+            tray_status,
+            invalid_flag,
+            spec,
+            finish_time,
+            weight,
+            batch_num,
+            source,
+            product_code,
+            order_id
+        FROM
+            dbo.order_info
+        WHERE
+            tray_status = '4'
+            AND finish_time &gt;= CAST(GETDATE() AS DATE)
+        ORDER BY
+            finish_time DESC
     </select>
 
 </mapper>

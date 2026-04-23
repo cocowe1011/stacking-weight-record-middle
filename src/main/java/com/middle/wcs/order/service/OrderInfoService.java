@@ -38,4 +38,10 @@ public interface OrderInfoService {
     PageInfo<OrderInfo> queryHistoryOrderList(OrderInfoPageDTO dto);
 
     List<OrderInfo> selectByList(OrderInfo dto);
+
+    /**
+     * 查询今日最新已下货数据
+     * @return 订单信息
+     */
+    OrderInfo getLastUnloadGoods();
 }

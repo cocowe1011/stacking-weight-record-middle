@@ -80,4 +80,14 @@ public class OrderInfo {
      * 来源
      */
     private String source;
+
+    /**
+     * 物料编码
+     */
+    private String productCode;
+
+    /**
+     * 生产订单号
+     */
+    private String orderId;
 }

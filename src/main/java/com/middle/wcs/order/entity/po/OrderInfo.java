@@ -90,4 +90,9 @@ public class OrderInfo {
      * 生产订单号
      */
     private String orderId;
+
+    /**
+     * 分录行号（对应金蝶ERP的FTreeEntity_fseq字段）
+     */
+    private String fseqId;
 }

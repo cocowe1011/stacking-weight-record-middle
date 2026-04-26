@@ -17,6 +17,7 @@
         <result property="source" column="source" jdbcType="VARCHAR"/>
         <result property="productCode" column="product_code" jdbcType="VARCHAR"/>
         <result property="orderId" column="order_id" jdbcType="VARCHAR"/>
+        <result property="fseqId" column="fseq_id" jdbcType="VARCHAR"/>
     </resultMap>
 
     <select id="queryHistoryOrderList" resultMap="OrderInfoMap">
@@ -80,7 +81,8 @@
             batch_num,
             source,
             product_code,
-            order_id
+            order_id,
+            fseq_id
         FROM
             dbo.order_info
         WHERE

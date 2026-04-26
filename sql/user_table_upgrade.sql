@@ -38,3 +38,10 @@ BEGIN
     ALTER TABLE order_info ADD unload_port NVARCHAR(10) DEFAULT NULL;
     EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'下货口编号（1-下货口1，2-下货口2）', @level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'order_info', @level2type=N'COLUMN', @level2name=N'unload_port';
 END
+
+-- 10. order_info表添加分录ID字段（对应金蝶ERP的FTreeEntity_FEntryId）
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('order_info') AND name = 'fentry_id')
+BEGIN
+    ALTER TABLE order_info ADD fentry_id NVARCHAR(50) DEFAULT NULL;
+    EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'分录ID（对应金蝶ERP的FTreeEntity_FEntryId字段）', @level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'order_info', @level2type=N'COLUMN', @level2name=N'fentry_id';
+END

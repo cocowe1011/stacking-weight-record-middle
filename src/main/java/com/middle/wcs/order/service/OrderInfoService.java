@@ -41,7 +41,8 @@ public interface OrderInfoService {
 
     /**
      * 查询今日最新已下货数据
+     * @param unloadPort 下货口编号（1或2），可为空
      * @return 订单信息
      */
-    OrderInfo getLastUnloadGoods();
+    OrderInfo getLastUnloadGoods(String unloadPort);
 }

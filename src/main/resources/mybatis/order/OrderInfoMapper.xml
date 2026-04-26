@@ -18,6 +18,7 @@
         <result property="productCode" column="product_code" jdbcType="VARCHAR"/>
         <result property="orderId" column="order_id" jdbcType="VARCHAR"/>
         <result property="fseqId" column="fseq_id" jdbcType="VARCHAR"/>
+        <result property="unloadPort" column="unload_port" jdbcType="VARCHAR"/>
     </resultMap>
 
     <select id="queryHistoryOrderList" resultMap="OrderInfoMap">
@@ -82,12 +83,16 @@
             source,
             product_code,
             order_id,
-            fseq_id
+            fseq_id,
+            unload_port
         FROM
             dbo.order_info
         WHERE
             tray_status = '4'
             AND finish_time &gt;= CAST(GETDATE() AS DATE)
+        <if test="unloadPort != null and unloadPort != ''">
+            AND unload_port = #{unloadPort}
+        </if>
         ORDER BY
             finish_time DESC
     </select>

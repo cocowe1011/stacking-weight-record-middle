@@ -31,3 +31,10 @@ END
 
 -- 8. 更新现有用户为操作员角色
 UPDATE user_info SET user_role = 'OPERATOR' WHERE user_code != 'admin' AND user_role IS NULL;
+
+-- 9. order_info表添加下货口编号字段
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('order_info') AND name = 'unload_port')
+BEGIN
+    ALTER TABLE order_info ADD unload_port NVARCHAR(10) DEFAULT NULL;
+    EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'下货口编号（1-下货口1，2-下货口2）', @level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'order_info', @level2type=N'COLUMN', @level2name=N'unload_port';
+END

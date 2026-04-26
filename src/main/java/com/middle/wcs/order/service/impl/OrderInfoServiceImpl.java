@@ -56,7 +56,7 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     }
 
     @Override
-    public OrderInfo getLastUnloadGoods() {
-        return this.orderInfoMapper.getLastUnloadGoods();
+    public OrderInfo getLastUnloadGoods(String unloadPort) {
+        return this.orderInfoMapper.getLastUnloadGoods(unloadPort);
     }
 }

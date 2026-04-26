@@ -95,4 +95,9 @@ public class OrderInfo {
      * 分录行号（对应金蝶ERP的FTreeEntity_fseq字段）
      */
     private String fseqId;
+
+    /**
+     * 下货口编号（1-下货口1，2-下货口2）
+     */
+    private String unloadPort;
 }

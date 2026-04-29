@@ -20,6 +20,7 @@
         <result property="fseqId" column="fseq_id" jdbcType="VARCHAR"/>
         <result property="fentryId" column="fentry_id" jdbcType="VARCHAR"/>
         <result property="unloadPort" column="unload_port" jdbcType="VARCHAR"/>
+        <result property="udiCode" column="udi_code" jdbcType="VARCHAR"/>
     </resultMap>
 
     <select id="queryHistoryOrderList" resultMap="OrderInfoMap">
@@ -35,7 +36,8 @@
             finish_time,
             weight,
             batch_num,
-            source
+            source,
+            udi_code
         FROM
             dbo.order_info
         WHERE
@@ -86,7 +88,8 @@
             order_id,
             fseq_id,
             fentry_id,
-            unload_port
+            unload_port,
+            udi_code
         FROM
             dbo.order_info
         WHERE

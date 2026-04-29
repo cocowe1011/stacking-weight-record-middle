@@ -45,3 +45,10 @@ BEGIN
     ALTER TABLE order_info ADD fentry_id NVARCHAR(50) DEFAULT NULL;
     EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'分录ID（对应金蝶ERP的FTreeEntity_FEntryId字段）', @level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'order_info', @level2type=N'COLUMN', @level2name=N'fentry_id';
 END
+
+-- 11. order_info表添加UDI条码字段
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('order_info') AND name = 'udi_code')
+BEGIN
+    ALTER TABLE order_info ADD udi_code NVARCHAR(255) DEFAULT NULL;
+    EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'UDI条码', @level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'order_info', @level2type=N'COLUMN', @level2name=N'udi_code';
+END

@@ -26,8 +26,9 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     private OrderInfoMapper orderInfoMapper;
     
     @Override
-    public Integer save(OrderInfo orderInfo) {
-        return orderInfoMapper.insert(orderInfo);
+    public OrderInfo save(OrderInfo orderInfo) {
+        orderInfoMapper.insert(orderInfo);
+        return orderInfo;
     }
     
     @Override

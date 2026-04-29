@@ -18,7 +18,7 @@ public interface OrderInfoService {
      *
      * @param orderInfo 订单信息
      */
-    Integer save(OrderInfo orderInfo);
+    OrderInfo save(OrderInfo orderInfo);
     
     /**
      * 更新订单信息

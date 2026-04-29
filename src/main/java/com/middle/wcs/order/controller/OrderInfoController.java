@@ -29,7 +29,7 @@ public class OrderInfoController {
     
     @ApiOperation("保存订单信息")
     @PostMapping("/save")
-    public ResponseResult<Integer> save(@ApiParam(value = "订单信息", required = true) @RequestBody OrderInfo po) {
+    public ResponseResult<OrderInfo> save(@ApiParam(value = "订单信息", required = true) @RequestBody OrderInfo po) {
         return ResponseResult.success(this.orderInfoService.save(po));
     }
     

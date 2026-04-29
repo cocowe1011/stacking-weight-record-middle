@@ -105,4 +105,9 @@ public class OrderInfo {
      * 下货口编号（1-下货口1，2-下货口2）
      */
     private String unloadPort;
+
+    /**
+     * UDI条码
+     */
+    private String udiCode;
 }

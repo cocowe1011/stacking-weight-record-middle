@@ -37,6 +37,11 @@
             weight,
             batch_num,
             source,
+            product_code,
+            order_id,
+            fseq_id,
+            fentry_id,
+            unload_port,
             udi_code
         FROM
             dbo.order_info

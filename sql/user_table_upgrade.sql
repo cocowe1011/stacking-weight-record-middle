@@ -52,3 +52,6 @@ BEGIN
     ALTER TABLE order_info ADD udi_code NVARCHAR(255) DEFAULT NULL;
     EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'UDI条码', @level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'order_info', @level2type=N'COLUMN', @level2name=N'udi_code';
 END
+
+--更改订单id字段类型为varchar(255)，以适应更长的订单ID
+ALTER TABLE [dbo].[order_info] ALTER COLUMN [order_id] varchar(255) NULL

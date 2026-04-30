@@ -26,13 +26,13 @@ public class UdiController {
 
         // 构造mock数据，模拟ERP接口出参
         Map<String, Object> udiData = new HashMap<>();
-        udiData.put("udi", udi != null ? udi : "UDI202604300001");
-        udiData.put("productionLineCode", "A1");
-        udiData.put("productName", "测试产品A");
-        udiData.put("specMode", "500ml");
-        udiData.put("produceBatchNo", "BATCH2026043001");
-        udiData.put("productCode", "PROD001");
-        udiData.put("orderNo", "100001");
+        udiData.put("udi", udi != null ? udi : "(01)56945060548156(11)260417(17)270416(10)C8260417012");
+        udiData.put("productionLineCodeWMS", "A1");
+        udiData.put("productName", "血液透析浓缩液");
+        udiData.put("specMode", "SXG-Y-A");
+        udiData.put("produceBatchNo", "C8260417012");
+        udiData.put("productCode", "5ZA106000012");
+        udiData.put("orderNo", "SG072604170002");
 
         List<Map<String, Object>> dataList = new ArrayList<>();
         dataList.add(udiData);

@@ -71,6 +71,12 @@
         <if test="productionDate != null and productionDate != ''">
             AND CAST(insert_time AS DATE) = CAST(#{productionDate} AS DATE)
         </if>
+        <if test="productCode != null and productCode != ''">
+            AND product_code LIKE CONCAT('%', #{productCode}, '%')
+        </if>
+        <if test="orderId != null and orderId != ''">
+            AND order_id LIKE CONCAT('%', #{orderId}, '%')
+        </if>
         ORDER BY
             insert_time DESC
     </select>

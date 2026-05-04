@@ -61,4 +61,14 @@ public class OrderInfoPageDTO {
      * 生产日期（对应 insert_time 的日期，格式 yyyy-MM-dd，按自然日筛选）
      */
     private String productionDate;
+
+    /**
+     * 物料编码（模糊）
+     */
+    private String productCode;
+
+    /**
+     * 生产订单号（模糊）
+     */
+    private String orderId;
 }

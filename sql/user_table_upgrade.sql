@@ -55,3 +55,36 @@ END
 
 --更改订单id字段类型为varchar(255)，以适应更长的订单ID
 ALTER TABLE [dbo].[order_info] ALTER COLUMN [order_id] varchar(255) NULL
+
+-- ============================================================
+-- order_info 表索引优化（解决 queryHistoryOrderList 查询超时）
+-- ============================================================
+
+-- 1. 核心复合索引：覆盖 invalid_flag 等值过滤 + insert_time 排序
+--    查询固定条件 invalid_flag='0'，且按 insert_time DESC 排序
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_order_info_invalid_flag_insert_time' AND object_id = OBJECT_ID('order_info'))
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_order_info_invalid_flag_insert_time
+    ON dbo.order_info (invalid_flag, insert_time DESC);
+END
+
+-- 2. 托盘状态索引：tray_status 是高频等值过滤条件
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_order_info_tray_status' AND object_id = OBJECT_ID('order_info'))
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_order_info_tray_status
+    ON dbo.order_info (tray_status);
+END
+
+-- 3. 物料编码索引：product_code 模糊查询（前缀模糊时可走索引）
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_order_info_product_code' AND object_id = OBJECT_ID('order_info'))
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_order_info_product_code
+    ON dbo.order_info (product_code);
+END
+
+-- 4. 生产订单号索引：order_id 模糊查询
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_order_info_order_id' AND object_id = OBJECT_ID('order_info'))
+BEGIN
+    CREATE NONCLUSTERED INDEX IX_order_info_order_id
+    ON dbo.order_info (order_id);
+END
